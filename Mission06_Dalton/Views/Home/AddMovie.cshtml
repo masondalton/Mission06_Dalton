@@ -1,4 +1,4 @@
-@model TModel
+@model Movie
 
 @{
     Layout = null;
@@ -8,19 +8,19 @@
 
 <form method="post">
     <label asp-for="Category">Category: </label>
-    <input asp-for="Category" />
+    <input asp-for="Category" required/>
     <br />
     <label asp-for="Title">Title: </label>
-    <input asp-for="Title"/>
+    <input asp-for="Title" required/>
     <br />
     <label asp-for="Year">Year: </label>
-    <input asp-for="Year"/>
+    <input asp-for="Year" required/>
     <br />
     <label asp-for="Director">Director: </label>
-    <input asp-for="Director"/>
+    <input asp-for="Director" required/>
     <br />
     <label asp-for="Rating">Rating: </label>
-    <select asp-for="Rating">
+    <select asp-for="Rating" required>
         <option value="G">G</option>
         <option value="PG">PG</option>
         <option value="PG-13">PG-13</option>

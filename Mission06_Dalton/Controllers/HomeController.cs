@@ -13,16 +13,28 @@ public class HomeController : Controller
         _logger = logger;
     }
 
+    // Home page directions
+    [HttpGet]
     public IActionResult Index()
     {
         return View();
     }
-
+    
+    // Get and post methods for adding form to the database
+    [HttpGet]
     public IActionResult AddMovie()
     {
         return View();
     }
+
+    [HttpPost]
+    public IActionResult AddMovie(Movie movie)
+    {
+        return View("Confirmation", movie);
+    }
     
+    // For accessing the about page
+    [HttpGet]
     public IActionResult About()
     {
         return View();

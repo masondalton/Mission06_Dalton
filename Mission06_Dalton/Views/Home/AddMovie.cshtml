@@ -6,23 +6,26 @@
 
 <h1>Add Movie to your Private Collection</h1>
 
+<!-- Add movie table that links to the model for updating to the database-->
 <form method="post">
+    <!-- Get Category, title, year, director, rating, if it was edited, 
+    who it may be lent to right now, and possibily any notes about the moive-->
     <label asp-for="Category">Category: </label>
     <input asp-for="Category" required/>
-    <br />
-    <br />
+    <br/>
+    <br/>
     <label asp-for="Title">Title: </label>
     <input asp-for="Title" required/>
-    <br />
-    <br />
+    <br/>
+    <br/>
     <label asp-for="Year">Year: </label>
     <input asp-for="Year" required/>
-    <br />
-    <br />
+    <br/>
+    <br/>
     <label asp-for="Director">Director: </label>
     <input asp-for="Director" required/>
-    <br />
-    <br />
+    <br/>
+    <br/>
     <label asp-for="Rating">Rating: </label>
     <select asp-for="Rating" required>
         <option value="G">G</option>
@@ -32,23 +35,24 @@
         <option value="UR">UR</option>
         <option value="NR">NR</option>
     </select>
-    <br />
-    <br />
+    <br/>
+    <br/>
     <label asp-for="Edited">Edited: </label>
     <select asp-for="Edited">
         <option value=false>No</option>
         <option value=true>Yes</option>
     </select>
-    <br />
-    <br />
+    <br/>
+    <br/>
     <label asp-for="LentTo">Lent To: </label>
-    <input asp-for="LentTo" />
-    <br />
-    <br />
+    <input asp-for="LentTo"/>
+    <br/>
+    <br/>
     <label asp-for="Notes">Notes: </label>
+    @* Remember to cap the notes box at 25 characters *@
     <input asp-for="Notes" maxlength="25"/>
-    <br />
-    <br />
-    
+    <br/>
+    <br/>
+
     <button type="submit">Submit Movie</button>
 </form>

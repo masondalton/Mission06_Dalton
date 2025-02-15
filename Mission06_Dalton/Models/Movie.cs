@@ -2,6 +2,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Mission06_Dalton.Models;
 
+// Movie class to be created when the form is filled out. Makes sure that users enter data for the required options 
+// Include automatic false for edited, null optionals for lent status or any notes
 public class Movie
 {
     [Key]

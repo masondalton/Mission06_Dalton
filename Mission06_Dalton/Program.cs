@@ -1,7 +1,16 @@
+using Microsoft.EntityFrameworkCore;
+using Mission06_Dalton.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+// Sql database connection between context
+builder.Services.AddDbContext<MoviesContext>(options =>
+{
+    options.UseSqlite(builder.Configuration["ConnectionStrings:MovieConnection"]);
+});
 
 var app = builder.Build();
 

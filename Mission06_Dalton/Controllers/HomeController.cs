@@ -6,11 +6,10 @@ namespace Mission06_Dalton.Controllers;
 
 public class HomeController : Controller
 {
-    private readonly ILogger<HomeController> _logger;
-
-    public HomeController(ILogger<HomeController> logger)
+    private MoviesContext _context;
+    public HomeController(MoviesContext movieBlank)
     {
-        _logger = logger;
+        _context = movieBlank;
     }
 
     // Home page directions
@@ -30,6 +29,10 @@ public class HomeController : Controller
     [HttpPost]
     public IActionResult AddMovie(Movie movie)
     {
+        _context.Movies.Add(movie); // Add the movie to the database for Joel's connection
+        _context.SaveChanges(); // Makes permanant the addition to the DB
+    
+        // Redirect to the confirmation of adding the page
         return View("Confirmation", movie);
     }
     

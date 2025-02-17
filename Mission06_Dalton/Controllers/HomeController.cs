@@ -1,5 +1,7 @@
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Mission06_Dalton.Models;
 
 namespace Mission06_Dalton.Controllers;
@@ -44,14 +46,11 @@ public class HomeController : Controller
     {
         return View();
     }
-
-
+    
     public IActionResult MovieList()
     {
         // Linq, using sql style to get the movie data from database
-        var movies = _context.Movies
-            .Where(x => x.Year == DateTime.Now.Year)
-            .ToList();
+        var movies = _context.Movies.Include(m => m.Category).ToList();
         
         return View(movies);
 

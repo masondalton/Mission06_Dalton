@@ -16,16 +16,18 @@ public class Movie
     public Category Category { get; set; }
     
     public string Title { get; set; }
-    
-    [Range(1888, 2100)]
+
     public int Year { get; set; }
 
-    public string Director { get; set; }
+    public string Director { get; set; } = String.Empty;
     
-    public string Rating { get; set; }
+    public string Rating { get; set; } = String.Empty;
     
     public bool Edited { get; set; } = false;
-    public string? LentTo { get; set; }
+    
+    public string? LentTo { get; set; } = String.Empty;
+    
+    public bool CopiedToPlex { get; set; } = false;
     
     [MaxLength(25, ErrorMessage = "Notes cannot exceed 25 characters.")]
     public string? Notes { get; set; } = string.Empty;

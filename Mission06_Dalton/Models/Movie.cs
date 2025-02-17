@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Mission06_Dalton.Models;
 
@@ -10,20 +11,17 @@ public class Movie
     [Required]
     public int MovieID { get; set; }
     
-    [Required]
-    public string Category { get; set; }
+    [ForeignKey("CategoryId")]
+    public int CategoryId { get; set; }
+    public Category Category { get; set; }
     
-    [Required]
     public string Title { get; set; }
     
-    [Required]
-    [Range(1900, 2100)]
+    [Range(1888, 2100)]
     public int Year { get; set; }
-    
-    [Required]
+
     public string Director { get; set; }
     
-    [Required]
     public string Rating { get; set; }
     
     public bool Edited { get; set; } = false;

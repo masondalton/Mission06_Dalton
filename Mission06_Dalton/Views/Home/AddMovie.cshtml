@@ -10,8 +10,13 @@
 <form method="post">
     <!-- Get Category, title, year, director, rating, if it was edited, 
     who it may be lent to right now, and possibily any notes about the moive-->
-    <label asp-for="Category">Category: </label>
-    <input asp-for="Category" required/>
+    <select asp-for="CategoryId" required>
+        <option value="">Select a Category</option>
+        @foreach (Category c in ViewBag.Categories)
+        {
+            <option value="@c.CategoryId">@c.CategoryName</option>
+        }
+    </select>
     <br/>
     <br/>
     <label asp-for="Title">Title: </label>

@@ -23,6 +23,8 @@ public class HomeController : Controller
     [HttpGet]
     public IActionResult AddMovie()
     {
+        ViewBag.Categories = _context.Categories.ToList();
+        
         return View();
     }
 
@@ -42,5 +44,16 @@ public class HomeController : Controller
     {
         return View();
     }
-    
+
+
+    public IActionResult MovieList()
+    {
+        // Linq, using sql style to get the movie data from database
+        var movies = _context.Movies
+            .Where(x => x.Year == DateTime.Now.Year)
+            .ToList();
+        
+        return View(movies);
+
+    }
 }

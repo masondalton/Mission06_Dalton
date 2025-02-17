@@ -1,0 +1,37 @@
+@* 
+
+*@
+
+@{
+}
+@model List<Movie>
+
+<table class="table-bordered">
+    <thead class="table-header">
+        <tr>
+            <td>Title</td>
+            <td>Category</td>
+            <td>Year</td>
+            <td>Director</td>
+            <td>Rating</td>
+            <td>Edited</td>
+            <td>Notes</td>
+        </tr>
+    </thead>
+    
+    @foreach (var movie in Model)
+    {
+        <tr>
+            <tbody>
+            <td>@movie.Title</td>
+            <td>@movie.Category</td>
+            <td>@movie.Year</td>
+            <td>@movie.Director</td>
+            <td>@movie.Rating</td>
+            <td>@movie.Edited</td>
+            <td>@movie.Notes</td>
+            </tbody>
+        </tr>
+
+    }
+</table>

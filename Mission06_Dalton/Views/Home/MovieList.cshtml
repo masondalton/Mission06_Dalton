@@ -29,8 +29,8 @@
             <td>@movie.Year</td>
             <td>@movie.Director</td>
             <td>@movie.Rating</td>
-            <td>@movie.Edited</td>
-            <td>@movie.CopiedToPlex</td>
+            <td>@(movie.Edited ? "Yes" : "No")</td>
+            <td>@(movie.CopiedToPlex ? "Yes" : "No")</td>
             <td>@movie.Notes</td>
             </tbody>
         </tr>

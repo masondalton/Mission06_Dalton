@@ -51,8 +51,42 @@ public class HomeController : Controller
     {
         // Linq, using sql style to get the movie data from database
         var movies = _context.Movies.Include(m => m.Category).ToList();
-        
         return View(movies);
+    }
 
+    [HttpGet]
+    public IActionResult Edit(int id)
+    {
+        var record = _context.Movies
+            .Single(x => x.MovieId == id);
+        
+        ViewBag.Categories = _context.Categories.ToList();
+        return View("AddMovie", record);
+    }
+
+    [HttpPost]
+    public IActionResult Edit(Movie movie)
+    {
+        _context.Update(movie);
+        _context.SaveChanges();
+        
+        return RedirectToAction("MovieList");
+    }
+
+    [HttpGet]
+    public IActionResult Delete(int id)
+    {
+        var record = _context.Movies.Single(x => x.MovieId == id);
+        
+        return View(record);
+    }
+
+    [HttpPost]
+    public IActionResult Delete(Movie movie)
+    {
+        _context.Movies.Remove(movie);
+        _context.SaveChanges();
+
+        return RedirectToAction("MovieList");
     }
 }

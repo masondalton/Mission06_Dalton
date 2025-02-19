@@ -7,6 +7,7 @@
 
 <!-- Add movie table that links to the model for updating to the database-->
 <form method="post">
+    <input type="hidden" asp-for="MovieId" /> @* For tracking with edit and delete *@
     <!-- Get Category, title, year, director, rating, if it was edited, 
     who it may be lent to right now, and possibily any notes about the moive-->
     <select asp-for="CategoryId" required>

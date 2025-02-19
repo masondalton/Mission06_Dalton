@@ -9,7 +9,7 @@ public class Movie
 {
     [Key]
     [Required]
-    public int MovieID { get; set; }
+    public int MovieId { get; set; }
     
     [ForeignKey("CategoryId")]
     public int CategoryId { get; set; }
@@ -19,17 +19,17 @@ public class Movie
 
     public int Year { get; set; }
 
-    public string Director { get; set; } = String.Empty;
+    public string? Director { get; set; }
     
-    public string Rating { get; set; } = String.Empty;
+    public string? Rating { get; set; }
     
     public bool Edited { get; set; } = false;
     
-    public string? LentTo { get; set; } = String.Empty;
+    public string? LentTo { get; set; }
     
     public bool CopiedToPlex { get; set; } = false;
     
     [MaxLength(25, ErrorMessage = "Notes cannot exceed 25 characters.")]
-    public string? Notes { get; set; } = string.Empty;
+    public string? Notes { get; set; }
     
 }

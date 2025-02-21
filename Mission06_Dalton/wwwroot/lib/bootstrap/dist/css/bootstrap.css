@@ -1973,8 +1973,46 @@ progress {
 .table > thead {
   vertical-align: bottom;
 }
+.table-header {
+  font-weight: bold;
+}
 .table > :not(:last-child) > :last-child > * {
   border-bottom-color: currentColor;
+}
+
+.table-header th {
+  font-weight: bold;
+  background-color: #f8f9fa; /* Light gray background */
+  color: #212529; /* Dark text for contrast */
+  text-transform: uppercase; /* Optional: Makes text all caps */
+  padding: 12px;
+  border-bottom: 2px solid #dee2e6; /* Slightly thicker bottom border */
+}
+
+/* Add spacing between table rows */
+.table > tbody > tr {
+  transition: background-color 0.2s ease-in-out;
+}
+
+/* Highlight row on hover */
+.table > tbody > tr:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Add spacing to buttons */
+.table td .btn {
+  margin-right: 5px;
+}
+
+/* Ensure table borders are visible */
+.table-bordered td, .table-bordered th {
+  border: 1px solid #dee2e6;
+  text-align: center; /* Center-align all cells */
+}
+
+/* Reduce padding inside table cells */
+.table > :not(caption) > * > * {
+  padding: 0.4rem;
 }
 
 .caption-top {

@@ -5,12 +5,12 @@
 
 <h1>Add Movie to your Private Collection</h1>
 
-<!-- Add movie table that links to the model for updating to the database-->
+@* The form for submitting a movie to the collection *@
 <form method="post">
-    <input type="hidden" asp-for="MovieId" /> @* For tracking with edit and delete *@
-    <!-- Get Category, title, year, director, rating, if it was edited, 
-    who it may be lent to right now, and possibily any notes about the moive-->
-    <select asp-for="CategoryId" required>
+    <input type="hidden" asp-for="MovieId" /> @* For tracking id for the edit and delete routes *@
+    
+    <label asp-for="CategoryId">Category: </label>
+    <select asp-for="CategoryId">
         <option value="">Select a Category</option>
         @foreach (Category c in ViewBag.Categories)
         {
@@ -20,11 +20,11 @@
     <br/>
     <br/>
     <label asp-for="Title">Title: </label>
-    <input asp-for="Title" required/>
+    <input asp-for="Title"/>
     <br/>
     <br/>
     <label asp-for="Year">Year: </label>
-    <input asp-for="Year" required min="1888"/>
+    <input asp-for="Year"/>
     <br/>
     <br/>
     <label asp-for="Director">Director: </label>
@@ -44,28 +44,31 @@
     <br/>
     <br/>
     <label asp-for="Edited">Edited: </label>
-    <select asp-for="Edited" required>
-        <option value=false>No</option>
-        <option value=true>Yes</option>
-    </select>
+    <div>
+        <input type="radio" asp-for="Edited" value="true" id="EditedYes" />
+        <label for="EditedYes">Yes</label>
+
+        <input type="radio" asp-for="Edited" value="false" id="EditedNo" />
+        <label for="EditedNo">No</label>
+    </div>
     <br/>
     <br/>
     <label asp-for="LentTo">Lent To: </label>
     <input asp-for="LentTo"/>
     <br/>
     <br/>
-    <label asp-for="CopiedToPlex">Copied to Plex: </label>
-    <select asp-for="CopiedToPlex" required="">
-        <option value=false>No</option>
-        <option value=true>Yes</option>
-    </select>
+    
     <br/>
     <br/>
     <label asp-for="Notes">Notes: </label>
-    @* Remember to cap the notes box at 25 characters *@
-    <input asp-for="Notes" maxlength="25"/>
+    @* Remember to cap the notes box at 25 characters, in the model *@
+    <input asp-for="Notes"/>
     <br/>
     <br/>
 
     <button type="submit">Submit Movie</button>
+    
+    @* This will display error message when data entry is missing or isn't correct based on the model validation *@
+    <div asp-validation-summary="All"></div>
+    
 </form>

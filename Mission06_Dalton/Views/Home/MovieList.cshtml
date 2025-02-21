@@ -5,21 +5,21 @@
 @{
 }
 @model List<Movie>
-
-<table class="table-bordered">
+@* The table lists all the movies from Joel's database *@
+<table class="table table-bordered">
     <thead class="table-header">
         <tr>
-            <td>Title</td>
-            <td>Category</td>
-            <td>Year</td>
-            <td>Director</td>
-            <td>Rating</td>
-            <td>Edited</td>
-            <td>Copied to Plex</td>
-            <td>Notes</td>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Year</th>
+            <th>Director</th>
+            <th>Rating</th>
+            <th>Edited</th>
+            <th>Copied to Plex</th>
+            <th>Notes</th>
         </tr>
     </thead>
-    
+    @* Loop through the bag with all the movie info joined with the category table *@
     @foreach (var movie in Model)
     {
         <tr>
@@ -32,7 +32,7 @@
             <td>@(movie.Edited ? "Yes" : "No")</td>
             <td>@(movie.CopiedToPlex ? "Yes" : "No")</td>
             <td>@movie.Notes</td>
-
+            @* Pass the MovieId through the route to pull up the information in the addmovie form but now used for editing *@
             <td><a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@movie.MovieId">Edit</a></td>
             <td><a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@movie.MovieId">Delete</a></td>
             </tbody>

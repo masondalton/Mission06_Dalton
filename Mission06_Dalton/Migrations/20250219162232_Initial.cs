@@ -29,13 +29,13 @@ namespace Mission06_Dalton.Migrations
                 name: "Movies",
                 columns: table => new
                 {
-                    MovieID = table.Column<int>(type: "INTEGER", nullable: false)
+                    MovieId = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    CategoryId = table.Column<int>(type: "INTEGER", nullable: false),
+                    CategoryId = table.Column<int>(type: "INTEGER", nullable: true),
                     Title = table.Column<string>(type: "TEXT", nullable: false),
                     Year = table.Column<int>(type: "INTEGER", nullable: false),
-                    Director = table.Column<string>(type: "TEXT", nullable: false),
-                    Rating = table.Column<string>(type: "TEXT", nullable: false),
+                    Director = table.Column<string>(type: "TEXT", nullable: true),
+                    Rating = table.Column<string>(type: "TEXT", nullable: true),
                     Edited = table.Column<bool>(type: "INTEGER", nullable: false),
                     LentTo = table.Column<string>(type: "TEXT", nullable: true),
                     CopiedToPlex = table.Column<bool>(type: "INTEGER", nullable: false),
@@ -43,13 +43,12 @@ namespace Mission06_Dalton.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Movies", x => x.MovieID);
+                    table.PrimaryKey("PK_Movies", x => x.MovieId);
                     table.ForeignKey(
                         name: "FK_Movies_Categories_CategoryId",
                         column: x => x.CategoryId,
                         principalTable: "Categories",
-                        principalColumn: "CategoryId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "CategoryId");
                 });
 
             migrationBuilder.InsertData(
